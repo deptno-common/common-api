@@ -1,0 +1,32 @@
+{
+  "name": "common-api",
+  "version": "0.1.0",
+  "description": "deptno common-api",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "offline": "serverless offline start"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "0.0.22",
+    "@types/node": "^8.0.57",
+    "@types/node-fetch": "^1.6.7",
+    "serverless-offline": "^3.16.0",
+    "serverless-webpack": "^4.0.0",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.6.2",
+    "webpack": "^3.6.0"
+  },
+  "author": "bglee <deptno@gmail.com>",
+  "dependencies": {
+    "aws-lambda": "^0.1.2",
+    "node-fetch": "^1.7.3"
+  },
+  "slack": {
+    "channel": {
+      "labs": "https://hooks.slack.com/services/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"
+    }
+  }
+}
