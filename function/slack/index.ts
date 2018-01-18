@@ -6,13 +6,16 @@ import {slack} from '../../package.json'
 function createSender(channel): ProxyHandler {
   return  async (event, context, cb) => {
     try {
-      const {text} = JSON.parse(event.body)
+      const body = JSON.stringify({
+        ...JSON.parse(event.body),
+        mrkdwn: true
+      })
 
       try {
         await fetch(channel, {
           headers: {'Content-Type': 'application/json'},
           method : 'POST',
-          body   : JSON.stringify({text, mrkdwn: true})
+          body
         })
         return cb(null, res200({sent: true}))
       } catch(ex) {
