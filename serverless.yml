@@ -5,12 +5,21 @@ service:
 plugins:
   - serverless-webpack
   - serverless-offline
+  - serverless-domain-manager
 
 provider:
   name: aws
   runtime: nodejs6.10
   region: ap-northeast-2
   memorySize: 128
+
+custom:
+  customDomain:
+    domainName: api.dev.googit.co
+    stage: dev
+    basePath: common
+    certificateName: "*.dev.googit.co"
+    createRoute53Record: true
 
 functions:
   sendToSlackRoom:
