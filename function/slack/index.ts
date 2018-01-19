@@ -17,14 +17,26 @@ function createSender(channel): ProxyHandler {
           method : 'POST',
           body
         })
+        handleSuccess(event)
         return cb(null, res200({sent: true}))
       } catch(ex) {
+        handleError(event)
         return cb(null, res500(ex))
       }
     } catch (ex) {
+      handleError(event)
       cb(null, res400('check body.text'))
     }
   }
+}
+
+function handleSuccess(log) {
+  console.log('success', new Date())
+  console.log(log)
+}
+function handleError(log) {
+  console.error('error', new Date())
+  console.error(log)
 }
 
 export const labs = createSender(slack.channel.labs)
